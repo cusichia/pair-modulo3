@@ -1,0 +1,20 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.darkMode {
+  background-color: #535383;
+  color: #ffffff;
+}
+
+.active {
+  display: block;
+}
+
+
+.hidden {
+  display: none;
+}
