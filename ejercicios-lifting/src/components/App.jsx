@@ -1,5 +1,8 @@
 import { useState } from "react";
 import Form from "./Form.jsx";
+import Preview from "./Preview.jsx"
+import SendButton from "./SendButton.jsx"
+import Reset from "./Reset.jsx"
 
 function App  () {
   // Estados del componente
@@ -75,34 +78,15 @@ function App  () {
     <div>
       <Form handleForm={handleForm}
       handleName={handleName} name={name} handleEmail={handleEmail} email={email} handleRegion={handleRegion} region={region} handlePaymentType={handlePaymentType} paymentType={paymentType} handleLegalTerms={handleLegalTerms} legalTerms={legalTerms}/>
-      
-        <div className="preview">
-          <h2>Tus datos son:</h2>
-          <ul>
-            <li>Nombre: {name}</li>
-            <li>Email: {email}</li>
-            <li>Región: {region}</li>
-            <li>Método de pago: {renderPaymentTypeText()}</li>
-            <li>
-              Has aceptado nuestros términos legales:{" "}
-              {legalTerms === true ? "Sí" : "No"}
-            </li>
-          </ul>
-        </div>
-
-        {/* reset */}
-        {/* Este botón debe estar inhabilitado mientras el formulario no sea válido */}
-        <input
-          className="button"
-          type="submit"
-          value="Enviar"
-          disabled={isValidForm() === false}
-        />
+      <Preview name={name} email={email} region={region} renderPaymentTypeText={renderPaymentTypeText} legalTerms={legalTerms}></Preview>
+        
 
         {/* send */}
-        <button className="button reset" onClick={handleResetButton}>
-          Limpiar el formulario
-        </button>
+        {/* Este botón debe estar inhabilitado mientras el formulario no sea válido */}
+        <SendButton isValidForm={isValidForm}></SendButton>
+
+        {/* reset */}
+        <Reset handleResetButton={handleResetButton}></Reset>
       
     </div>
   );
